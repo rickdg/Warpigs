@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Pigs Craft Kitchen — Slow-Smoked BBQ Catering, Cotati CA</title>
+  <meta name="description" content="Hand-crafted, slow-smoked barbecue from Pit Master Larry Hillix. Pop-up catering, events, and luncheons in Sonoma County.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================
+       WAR PIGS — MODERN REDESIGN
+       Fonts: Bebas Neue · Space Grotesk · DM Sans
+       ================================================ */
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-section: #111111;
+      --bg-card: #1a1a1a;
+      --cream: #f5f0e8;
+      --cream-60: #f5f0e899;
+      --cream-30: #f5f0e84d;
+      --cream-10: #f5f0e81a;
+      --ember: #e8461e;
+      --ember-glow: #ff6b3d;
+      --ember-dark: #b83415;
+      --amber: #f59e0b;
+
+      --font-display: "Bebas Neue", "Impact", sans-serif;
+      --font-heading: "Space Grotesk", sans-serif;
+      --font-body: "DM Sans", system-ui, sans-serif;
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+    button { font-family: inherit; }
+
+    .container {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ================================================
+       ANIMATED BACKGROUND PARTICLES
+       ================================================ */
+    .particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float-up 8s infinite;
+      box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+    }
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; width: 6px; height: 6px; }
+    .particle:nth-child(2) { left: 25%; animation-delay: 1.5s; animation-duration: 9s; width: 9px; height: 9px; }
+    .particle:nth-child(3) { left: 40%; animation-delay: 3s; animation-duration: 6s; width: 5px; height: 5px; }
+    .particle:nth-child(4) { left: 55%; animation-delay: 0.5s; animation-duration: 10s; width: 10px; height: 10px; }
+    .particle:nth-child(5) { left: 70%; animation-delay: 2s; animation-duration: 8s; width: 7px; height: 7px; }
+    .particle:nth-child(6) { left: 85%; animation-delay: 4s; animation-duration: 7s; width: 8px; height: 8px; }
+    .particle:nth-child(7) { left: 15%; animation-delay: 5s; animation-duration: 11s; width: 4px; height: 4px; }
+    .particle:nth-child(8) { left: 60%; animation-delay: 6s; animation-duration: 9s; width: 7px; height: 7px; }
+
+    @keyframes float-up {
+      0% { bottom: -20px; opacity: 0; transform: translateX(0); }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.3; }
+      100% { bottom: 100%; opacity: 0; transform: translateX(40px); }
+    }
+
+    /* ================================================
+       TEXT ANIMATION SYSTEM
+       ================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d5 { transition-delay: 0.5s; }
+    .reveal-d6 { transition-delay: 0.6s; }
+
+    /* Horizontal slide-in */
+    .slide-left {
+      opacity: 0;
+      transform: translateX(80px);
+      transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+    }
+    .slide-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .slide-right {
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+    }
+    .slide-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Scale-in */
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+    }
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Character-by-character reveal for hero */
+    .char-reveal {
+      display: inline-block;
+      overflow: hidden;
+    }
+    .char-reveal span {
+      display: inline-block;
+      transform: translateY(110%);
+      animation: char-slide 0.6s var(--ease-out-expo) forwards;
+    }
+    @keyframes char-slide {
+      to { transform: translateY(0); }
+    }
+
+    /* ================================================
+       NAVIGATION
+       ================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 1.5rem 0;
+      transition: all 0.5s var(--ease-out-expo);
+    }
+    .nav.scrolled {
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--cream-10);
+    }
+    .nav__inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.3s;
+    }
+    .nav__brand:hover { transform: scale(1.03); }
+    .nav__logo {
+      height: 9rem;
+      width: 9rem;
+      object-fit: contain;
+      transition: all 0.5s var(--ease-out-expo);
+    }
+    .nav.scrolled .nav__logo {
+      height: 5rem;
+      width: 5rem;
+    }
+    .nav__name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+    }
+    .nav__link {
+      color: var(--cream-60);
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.3s;
+    }
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--ember);
+      transition: width 0.4s var(--ease-out-expo);
+    }
+    .nav__link:hover { color: var(--cream); }
+    .nav__link:hover::after { width: 100%; }
+    .nav__cta {
+      background: var(--ember);
+      color: var(--cream);
+      padding: 0.65rem 1.75rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+    }
+    .nav__cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.15));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .nav__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232, 70, 30, 0.4);
+    }
+    .nav__cta:hover::before { opacity: 1; }
+
+    /* Mobile toggle */
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 110;
+    }
+    .nav__toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--cream);
+      margin: 6px 0;
+      transition: all 0.4s var(--ease-out-expo);
+      border-radius: 2px;
+    }
+    .nav__toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav__toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav__toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* ================================================
+       HERO
+       ================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.1s linear;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, var(--bg-dark) 0%, rgba(10,10,10,0.6) 40%, rgba(10,10,10,0.3) 100%),
+        linear-gradient(to right, rgba(10,10,10,0.8) 0%, transparent 60%);
+    }
+    /* Animated ember glow */
+    .hero__glow {
+      position: absolute;
+      bottom: -200px;
+      left: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232,70,30,0.15), transparent 70%);
+      border-radius: 50%;
+      animation: glow-pulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes glow-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.15); opacity: 0.8; }
+    }
+    .hero__content {
+      position: relative;
+      z-index: 10;
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 10rem 2rem 6rem;
+      width: 100%;
+    }
+    .hero__tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--ember);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+      background: rgba(232, 70, 30, 0.1);
+      border: 1px solid rgba(232, 70, 30, 0.25);
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+    }
+    .hero__tagline svg { width: 1rem; height: 1rem; }
+    .hero__title {
+      font-family: var(--font-display);
+      color: var(--cream);
+      font-size: clamp(4rem, 12vw, 12rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      max-width: 60rem;
+      letter-spacing: 0.03em;
+    }
+    .hero__title .ember {
+      color: var(--ember);
+      text-shadow: 0 0 60px rgba(232, 70, 30, 0.3);
+    }
+    .hero__desc {
+      margin-top: 2.5rem;
+      color: var(--cream-60);
+      max-width: 32rem;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    .hero__buttons {
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--ember);
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 1.1rem 2.5rem;
+      border-radius: 0.5rem;
+      transition: all 0.4s var(--ease-out-expo);
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.6s;
+    }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(232, 70, 30, 0.5);
+      transform: translateY(-3px);
+    }
+    .btn-primary svg {
+      width: 1rem;
+      height: 1rem;
+      transition: transform 0.3s var(--ease-out-expo);
+    }
+    .btn-primary:hover svg { transform: translateX(5px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--cream-30);
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 1.1rem 2.5rem;
+      border-radius: 0.5rem;
+      transition: all 0.4s var(--ease-out-expo);
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .btn-outline:hover {
+      background: var(--cream-10);
+      border-color: var(--cream-60);
+      transform: translateY(-3px);
+    }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--cream-60);
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .hero__scroll-line {
+      width: 1px;
+      height: 60px;
+      background: var(--cream-30);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--ember);
+      animation: scroll-line 2s ease-in-out infinite;
+    }
+    @keyframes scroll-line {
+      0% { top: -100%; }
+      50% { top: 100%; }
+      100% { top: 100%; }
+    }
+
+    /* ================================================
+       SECTION DIVIDER — animated line
+       ================================================ */
+    .divider {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .divider__line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cream-30), transparent);
+    }
+
+    /* ================================================
+       QUOTE
+       ================================================ */
+    .quote {
+      padding: 10rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .quote__glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(232,70,30,0.08), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: glow-pulse 5s ease-in-out infinite;
+    }
+    .quote__marks {
+      font-family: var(--font-display);
+      font-size: 8rem;
+      color: var(--ember);
+      opacity: 0.2;
+      line-height: 0.5;
+      margin-bottom: 1rem;
+    }
+    .quote__text {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      color: var(--cream);
+      font-size: clamp(2.5rem, 7vw, 6rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+    .quote__text .ember {
+      color: var(--ember);
+      text-shadow: 0 0 40px rgba(232, 70, 30, 0.25);
+    }
+    .quote__attr {
+      margin-top: 3rem;
+      color: var(--cream-60);
+      font-family: var(--font-heading);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: 0.75rem;
+    }
+
+    /* ================================================
+       MENU
+       ================================================ */
+    .menu {
+      padding: 8rem 2rem;
+      background: var(--bg-section);
+      position: relative;
+      overflow: hidden;
+    }
+    .menu::before {
+      content: 'SMOKE';
+      position: absolute;
+      top: 50%;
+      right: -5%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-family: var(--font-display);
+      font-size: 20rem;
+      color: rgba(255,255,255,0.015);
+      letter-spacing: 0.15em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .menu__inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--ember);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-label svg { width: 1rem; height: 1rem; }
+    .section-title {
+      font-family: var(--font-display);
+      color: var(--cream);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .section-title .ember {
+      color: var(--ember);
+      text-shadow: 0 0 40px rgba(232, 70, 30, 0.2);
+    }
+    .menu__desc {
+      margin-top: 2rem;
+      color: var(--cream-60);
+      line-height: 1.8;
+      max-width: 28rem;
+      font-size: 1rem;
+    }
+    .menu__list {
+      margin-top: 2.5rem;
+    }
+    .menu__item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      border-bottom: 1px solid var(--cream-10);
+      padding: 1rem 0;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .menu__item:hover {
+      padding-left: 0.5rem;
+      color: var(--ember-glow);
+    }
+    .menu__dot {
+      width: 8px;
+      height: 8px;
+      background: var(--ember);
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .menu__item:hover .menu__dot {
+      transform: scale(1.4);
+      box-shadow: 0 0 12px rgba(232, 70, 30, 0.6);
+    }
+    .menu__image-wrap {
+      position: relative;
+    }
+    .menu__image {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+    .menu__image-wrap:hover .menu__image {
+      transform: scale(1.02);
+    }
+    .menu__badge {
+      position: absolute;
+      bottom: -1rem;
+      left: 1.5rem;
+      background: var(--ember);
+      color: var(--cream);
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1.75rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 12px 30px rgba(232, 70, 30, 0.4);
+      animation: badge-float 3s ease-in-out infinite;
+    }
+    @keyframes badge-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* ================================================
+       SCHEDULE
+       ================================================ */
+    .schedule {
+      padding: 8rem 2rem;
+      position: relative;
+    }
+    .schedule__header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .schedule__intro {
+      max-width: 24rem;
+      color: var(--cream-60);
+      font-size: 0.95rem;
+    }
+    .schedule__grid {
+      display: grid;
+      gap: 2px;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: var(--cream-10);
+    }
+    .schedule__row {
+      display: grid;
+      grid-template-columns: 3fr 5fr 2fr 2fr;
+      gap: 1rem;
+      background: var(--bg-dark);
+      padding: 1.5rem 2rem;
+      align-items: center;
+      transition: all 0.4s var(--ease-out-expo);
+      cursor: default;
+    }
+    .schedule__row:hover {
+      background: rgba(232, 70, 30, 0.06);
+      padding-left: 2.5rem;
+    }
+    .schedule__date {
+      font-family: var(--font-display);
+      color: var(--cream);
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+    }
+    .schedule__venue {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      font-size: 1rem;
+    }
+    .schedule__city {
+      color: var(--cream-60);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+    }
+    .schedule__city svg {
+      width: 0.9rem;
+      height: 0.9rem;
+      color: var(--ember);
+    }
+    .schedule__time {
+      text-align: right;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      color: var(--ember);
+    }
+
+    /* ================================================
+       STORY
+       ================================================ */
+    .story {
+      padding: 8rem 2rem;
+      background: var(--bg-section);
+      position: relative;
+      overflow: hidden;
+    }
+    .story::before {
+      content: 'FIRE';
+      position: absolute;
+      bottom: -3rem;
+      left: -3%;
+      font-family: var(--font-display);
+      font-size: 22rem;
+      color: rgba(255,255,255,0.015);
+      letter-spacing: 0.15em;
+      pointer-events: none;
+    }
+    .story__inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .story__image-wrap {
+      position: relative;
+    }
+    .story__image {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+    .story__image-wrap:hover .story__image {
+      transform: scale(1.02);
+    }
+    /* Decorative frame */
+    .story__image-wrap::after {
+      content: '';
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      right: -1.5rem;
+      bottom: -1.5rem;
+      border: 2px solid var(--ember);
+      border-radius: 1rem;
+      opacity: 0.2;
+      z-index: -1;
+      transition: opacity 0.4s;
+    }
+    .story__image-wrap:hover::after { opacity: 0.5; }
+    .story__body {
+      margin-top: 2rem;
+      color: var(--cream-60);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+    .story__body p + p { margin-top: 1.5rem; }
+    .story__stats {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .stat {
+      border-left: 3px solid var(--ember);
+      padding-left: 1.25rem;
+      transition: border-color 0.3s;
+    }
+    .stat:hover { border-color: var(--ember-glow); }
+    .stat__number {
+      font-family: var(--font-display);
+      color: var(--cream);
+      font-size: 3rem;
+      letter-spacing: 0.03em;
+    }
+    .stat__label {
+      color: var(--cream-60);
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0.25rem;
+    }
+
+    /* ================================================
+       SERVICES
+       ================================================ */
+    .services {
+      padding: 8rem 2rem;
+      position: relative;
+    }
+    .services__title {
+      font-family: var(--font-display);
+      color: var(--cream);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 4rem;
+      max-width: 48rem;
+    }
+    .services__title .ember {
+      color: var(--ember);
+      text-shadow: 0 0 40px rgba(232, 70, 30, 0.2);
+    }
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      padding: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--cream-10);
+      border-radius: 1rem;
+      transition: all 0.5s var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--ember);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s var(--ease-out-expo);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      border-color: rgba(232, 70, 30, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .service-card__num {
+      font-family: var(--font-display);
+      color: var(--ember);
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover .service-card__num { opacity: 1; }
+    .service-card__title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
+    }
+    .service-card__desc {
+      color: var(--cream-60);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* ================================================
+       CONTACT
+       ================================================ */
+    .contact {
+      padding: 8rem 2rem;
+      background: var(--ember);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, var(--ember), var(--ember-glow) 40%, var(--ember-dark) 100%);
+    }
+    .contact::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .contact__inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .contact .section-label { color: rgba(255,255,255,0.7); }
+    .contact .section-title {
+      font-size: clamp(3rem, 7vw, 6rem);
+    }
+    .contact__desc {
+      margin-top: 2rem;
+      color: rgba(245, 240, 232, 0.85);
+      max-width: 28rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .contact__card {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+    .contact__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      background: rgba(232, 70, 30, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact__icon svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      color: var(--ember);
+    }
+    .contact__label {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--cream-60);
+      font-size: 0.65rem;
+      margin-bottom: 0.35rem;
+    }
+    .contact__value {
+      color: var(--cream);
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .contact__socials {
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--cream-10);
+      margin-top: 0.5rem;
+    }
+    .social-btn {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 0.5rem;
+      background: var(--cream-10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      transition: all 0.3s var(--ease-out-expo);
+      border: none;
+      cursor: pointer;
+    }
+    .social-btn:hover {
+      background: var(--ember);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(232, 70, 30, 0.4);
+    }
+    .social-btn svg { width: 1.2rem; height: 1.2rem; }
+
+    /* ================================================
+       FOOTER
+       ================================================ */
+    .footer {
+      background: var(--bg-dark);
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--cream-10);
+      position: relative;
+      overflow: hidden;
+    }
+    .footer__inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .footer__logo {
+      height: 10.5rem;
+      width: 10.5rem;
+      object-fit: contain;
+    }
+    .footer__name {
+      font-family: var(--font-display);
+      color: var(--cream);
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+    }
+    .footer__sub {
+      color: var(--cream-60);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0.25rem;
+    }
+    .footer__copy {
+      color: var(--cream-60);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* ================================================
+       RESPONSIVE
+       ================================================ */
+    @media (max-width: 1024px) {
+      .menu__inner,
+      .story__inner,
+      .contact__inner {
+        grid-template-columns: 1fr;
+      }
+      .story__inner { gap: 3rem; }
+      .story__img-col { order: 2; }
+      .story__text-col { order: 1; }
+      .services__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 10, 0.97);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        font-size: 1.4rem;
+        z-index: 100;
+      }
+      .nav__links.open { display: flex; }
+      .nav__toggle { display: block; }
+      .nav__name { display: none; }
+
+      .hero__scroll { display: none; }
+
+      .schedule__row {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .schedule__date {
+        grid-column: 1 / -1;
+        font-size: 1.15rem;
+      }
+      .schedule__time { text-align: left; }
+
+      .menu__badge {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        display: inline-block;
+        margin-top: 1.5rem;
+      }
+
+      .story__stats { gap: 1rem; }
+      .stat__number { font-size: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title { font-size: clamp(3rem, 15vw, 5rem); }
+      .section-title { font-size: clamp(2.25rem, 9vw, 3.5rem); }
+      .services__title { font-size: clamp(2.25rem, 9vw, 3.5rem); }
+      .quote__text { font-size: clamp(2rem, 9vw, 3.5rem); }
+      .nav__logo { height: 5rem; width: 5rem; }
+      .nav.scrolled .nav__logo { height: 3.5rem; width: 3.5rem; }
+      .footer__logo { height: 6rem; width: 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles are injected via JS -->
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="navbar">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand">
+        <img src="assets/warpigs-logo.png" alt="War Pigs Craft Kitchen" class="nav__logo" width="144" height="144">
+        <span class="nav__name">WAR PIGS</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav__links" id="navLinks">
+        <a href="#menu" class="nav__link" data-nav-link>Menu</a>
+        <a href="#schedule" class="nav__link" data-nav-link>Schedule</a>
+        <a href="#story" class="nav__link" data-nav-link>Story</a>
+        <a href="#contact" class="nav__cta" data-nav-link>Book Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="top" class="hero">
+      <img src="assets/hero-brisket.jpg" alt="Slow-smoked brisket with deep mahogany bark" class="hero__bg" id="heroBg" width="1920" height="1080">
+      <div class="hero__overlay"></div>
+      <div class="hero__glow"></div>
+
+      <div class="hero__content">
+        <div class="hero__tagline reveal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          Est. 2011 · Cotati, California
+        </div>
+        <h1 class="hero__title" id="heroTitle">
+          <span class="reveal reveal-d1">Low &amp;</span><br>
+          <span class="reveal reveal-d2"><span class="ember">Slow</span> Since</span><br>
+          <span class="reveal reveal-d3">Day One.</span>
+        </h1>
+        <p class="hero__desc reveal reveal-d4">
+          Hand-rubbed, oak-smoked barbecue from Pit Master Larry Hillix.
+          Catering, pop-ups, and luncheons across Sonoma County.
+        </p>
+        <div class="hero__buttons reveal reveal-d5">
+          <a href="#contact" class="btn-primary">
+            Book Catering
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <a href="#schedule" class="btn-outline">Find a Pop-Up</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ============ DIVIDER ============ -->
+    <div class="divider"><div class="divider__line"></div></div>
+
+    <!-- ============ QUOTE ============ -->
+    <section class="quote">
+      <div class="quote__glow"></div>
+      <div class="reveal">
+        <div class="quote__marks">"</div>
+        <p class="quote__text">
+          Life is too short<br>
+          to eat <span class="ember">bad BBQ.</span>
+        </p>
+        <div class="quote__attr">— Larry Hillix, Pit Master</div>
+      </div>
+    </section>
+
+    <!-- ============ DIVIDER ============ -->
+    <div class="divider"><div class="divider__line"></div></div>
+
+    <!-- ============ MENU ============ -->
+    <section id="menu" class="menu">
+      <div class="menu__inner">
+        <div class="slide-right">
+          <div class="section-label">The Spread</div>
+          <h2 class="section-title">Smoke,<br>Salt, Fire,<br>Time.</h2>
+          <p class="menu__desc">
+            A special blend of spices and rubs inspired by the one and only
+            Gary Park of G's Slow Smoked BBQ — combined with painstaking
+            precision and the familiar comfort of a backyard cookout.
+          </p>
+          <ul class="menu__list">
+            <li class="menu__item"><span class="menu__dot"></span> Beef Brisket — 14hr Oak</li>
+            <li class="menu__item"><span class="menu__dot"></span> St. Louis Ribs</li>
+            <li class="menu__item"><span class="menu__dot"></span> Carolina Pulled Pork</li>
+            <li class="menu__item"><span class="menu__dot"></span> Hot Links &amp; Burnt Ends</li>
+            <li class="menu__item"><span class="menu__dot"></span> Cornbread, Slaw, Beans</li>
+          </ul>
+        </div>
+        <div class="menu__image-wrap slide-left reveal-d2">
+          <img src="assets/bbq-spread.jpg" alt="Barbecue spread with brisket, ribs, pulled pork and sides" class="menu__image" loading="lazy" width="1600" height="1200">
+          <div class="menu__badge">Pit-Fresh Daily</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE ============ -->
+    <section id="schedule" class="schedule">
+      <div class="container">
+        <div class="schedule__header">
+          <div class="reveal">
+            <div class="section-label">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              Where to Find Us
+            </div>
+            <h2 class="section-title">May<br>Pop-Ups</h2>
+          </div>
+          <p class="schedule__intro reveal reveal-d2">
+            Chasing smoke across Sonoma County. Follow us on Instagram for last-minute drops and weather calls.
+          </p>
+        </div>
+
+        <div class="schedule__grid scale-in">
+          <div class="schedule__row">
+            <div class="schedule__date">FRI · MAY 1</div>
+            <div class="schedule__venue">Lagunitas Tap Room</div>
+            <div class="schedule__city"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Petaluma</div>
+            <div class="schedule__time">4–8pm</div>
+          </div>
+          <div class="schedule__row">
+            <div class="schedule__date">SAT · MAY 9</div>
+            <div class="schedule__venue">Windsor Town Green</div>
+            <div class="schedule__city"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Windsor</div>
+            <div class="schedule__time">12–7pm</div>
+          </div>
+          <div class="schedule__row">
+            <div class="schedule__date">THU · MAY 14</div>
+            <div class="schedule__venue">Cotati Brewing Co.</div>
+            <div class="schedule__city"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Cotati</div>
+            <div class="schedule__time">5–9pm</div>
+          </div>
+          <div class="schedule__row">
+            <div class="schedule__date">SAT · MAY 23</div>
+            <div class="schedule__venue">Private Catering</div>
+            <div class="schedule__city"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Sonoma</div>
+            <div class="schedule__time">Booked</div>
+          </div>
+          <div class="schedule__row">
+            <div class="schedule__date">FRI · MAY 29</div>
+            <div class="schedule__venue">HenHouse Brewing</div>
+            <div class="schedule__city"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Santa Rosa</div>
+            <div class="schedule__time">4–8pm</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DIVIDER ============ -->
+    <div class="divider"><div class="divider__line"></div></div>
+
+    <!-- ============ STORY ============ -->
+    <section id="story" class="story">
+      <div class="story__inner">
+        <div class="story__img-col slide-right">
+          <div class="story__image-wrap">
+            <img src="assets/pitmaster.jpg" alt="Pit master tending an offset smoker at golden hour" class="story__image" loading="lazy" width="1280" height="1600">
+          </div>
+        </div>
+        <div class="story__text-col slide-left reveal-d2">
+          <div class="section-label">The Story</div>
+          <h2 class="section-title">
+            A WARPIGS<br>
+            <span class="ember">History.</span>
+          </h2>
+          <div class="story__body">
+            <p>
+              I started BBQ'ing in my backyard as a hobby with my then-roommate Bryan Lakey about 9 years ago. Soon after, I entered a couple of competitions and had some immediate success. I thought I was gonna win the Grand Royal right away! I then decided to stalk out my mentor, Gary Park of G's Slow Smoked BBQ.
+            </p>
+            <p>
+              After about a month of harassment, Gary agreed to let me shadow him. He showed me his day-to-day operation and how to be a #bbqhustler. During the Sonoma County fires of 2018, I stalked my next mentor, Oscar Camacho of @camachossouthernstylebbq. I asked Camacho if he was going to help feed first responders and if I could help. He graciously accepted my help even though he knew nothing about me. Since then, Camacho has welcomed me in and been open with all his information.
+            </p>
+            <p>
+              When I decided to take the next step in my evolution, @Juncture_taproom and @Remys_lounge were there to invite me in and help me with the next steps of growth. Now you can find my meats at pop-up BBQ beer pairings, private parties, and catering gigs. I am forever thankful to everyone in this journey.
+            </p>
+            <p>
+              To my family, friends, and customers: <strong>THANK YOU.</strong>
+            </p>
+            <p style="margin-top: 2rem;">
+              <span style="color: var(--ember); font-family: var(--font-heading); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">— Larry H, Owner & Pitmaster</span>
+            </p>
+          </div>
+          <div class="story__stats">
+            <div class="stat">
+              <div class="stat__number" data-count="14">0</div>
+              <div class="stat__label">Years Smoking</div>
+            </div>
+            <div class="stat">
+              <div class="stat__number" data-count="500">0</div>
+              <div class="stat__label">Events Catered</div>
+            </div>
+            <div class="stat">
+              <div class="stat__number" data-count="1">0</div>
+              <div class="stat__label">Pit Master</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="services">
+      <div class="container">
+        <h2 class="services__title reveal">
+          We bring the<br><span class="ember">smoke.</span> You bring the crowd.
+        </h2>
+        <div class="services__grid">
+          <div class="service-card reveal reveal-d1">
+            <div class="service-card__num">01</div>
+            <h3 class="service-card__title">Pop-Up Kitchen</h3>
+            <p class="service-card__desc">Catch us slinging brisket and ribs at breweries and town squares across Sonoma County.</p>
+          </div>
+          <div class="service-card reveal reveal-d3">
+            <div class="service-card__num">02</div>
+            <h3 class="service-card__title">Event Catering</h3>
+            <p class="service-card__desc">Weddings, reunions, fundraisers. We bring the smoke, the sides, and the swagger.</p>
+          </div>
+          <div class="service-card reveal reveal-d5">
+            <div class="service-card__num">03</div>
+            <h3 class="service-card__title">Corporate Luncheons</h3>
+            <p class="service-card__desc">Feed the team right. Trays, sandwich bars, and full-service spreads on demand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <div class="contact__inner">
+        <div class="reveal">
+          <div class="section-label">Get in Touch</div>
+          <h2 class="section-title">Let's<br>Feed Your<br>People.</h2>
+          <p class="contact__desc">
+            Tell us about your event and we'll send a quote within 24 hours.
+            Most weekends book 4–6 weeks ahead.
+          </p>
+        </div>
+        <div class="contact__card reveal reveal-d3">
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact__label">Kitchen</div>
+              <div class="contact__value">8492 So. Gravenstein Hwy<br>Cotati, CA 94931</div>
+            </div>
+          </div>
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact__label">Call the Pit</div>
+              <div class="contact__value">(707) 555-0142</div>
+            </div>
+          </div>
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <div class="contact__label">Email</div>
+              <div class="contact__value">larry@warpigsbarbeque.com</div>
+            </div>
+          </div>
+          <div class="contact__socials">
+            <a href="#" aria-label="Instagram" class="social-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="social-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/warpigs-logo.png" alt="" class="footer__logo" width="168" height="168">
+        <div>
+          <div class="footer__name">WAR PIGS CRAFT KITCHEN</div>
+          <div class="footer__sub">Slow-Smoked BBQ · Cotati, CA</div>
+        </div>
+      </div>
+      <div class="footer__copy" id="footerYear"></div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // ——— Footer year ———
+    document.getElementById('footerYear').textContent =
+      `© ${new Date().getFullYear()} War Pigs BBQ. All rights reserved.`;
+
+    // ——— Navbar scroll shrink ———
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+      lastScroll = window.scrollY;
+    }, { passive: true });
+
+    // ——— Mobile nav toggle ———
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('[data-nav-link]').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ——— Scroll-triggered animations ———
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .slide-left, .slide-right, .scale-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ——— Parallax hero background ———
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight) {
+        heroBg.style.transform = `translateY(${window.scrollY * 0.3}px) scale(1.05)`;
+      }
+    }, { passive: true });
+
+    // ——— Animated counters ———
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.count);
+          const suffix = target > 10 ? '+' : '';
+          const duration = 2000;
+          const steps = 60;
+          const increment = target / steps;
+          let current = 0;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = Math.floor(current) + suffix;
+          }, duration / steps);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+    // ——— Inject Particles into all sections ———
+    document.querySelectorAll('section, footer').forEach(section => {
+      const particles = document.createElement('div');
+      particles.className = 'particles';
+      particles.setAttribute('aria-hidden', 'true');
+      for(let i=0; i<8; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        particles.appendChild(p);
+      }
+      section.insertBefore(particles, section.firstChild);
+    });
+  </script>
+
+</body>
+</html>
