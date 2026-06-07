@@ -1,0 +1,52 @@
+{
+  "Chateau Diana": {
+    "address": "6125 Dry Creek Rd, Healdsburg, CA 95448",
+    "website": "https://chateaudiana.com/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Chateau+Diana+Healdsburg"
+  },
+  "Cotati Brewing Co.": {
+    "address": "8225 Old Redwood Hwy, Cotati, CA 94931",
+    "website": "http://www.cotatibrewing.com/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Cotati+Brewing+Co.+Cotati"
+  },
+  "HenHouse Brewing": {
+    "address": "322 Bellevue Ave, Santa Rosa, CA 95407",
+    "website": "https://henhousebrewing.com/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=HenHouse+Brewing+Company+Santa+Rosa"
+  },
+  "Lagunitas Tap Room": {
+    "address": "1280 N McDowell Blvd, Petaluma, CA 94954",
+    "website": "https://lagunitas.com/taproom/petaluma",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Lagunitas+Brewing+Company+Petaluma"
+  },
+  "Mercy Lounge": {
+    "address": "7950 Redwood Dr #16, Cotati, CA 94931",
+    "website": "https://mercywellness.com/the-lounge/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=The+Lounge+at+Mercy+Wellness+Cotati"
+  },
+  "Parliament Brewery": {
+    "address": "5865 Labath Ave, Rohnert Park, CA 94928",
+    "website": "https://www.parliamentbrewing.com/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Parliament+Brewing+Company+Rohnert+Park"
+  },
+  "Private Catering": {
+    "address": "Private Location — Contact Larry to book your catering event!",
+    "website": "https://www.instagram.com/warpigs_craft_kitchen/",
+    "maps": ""
+  },
+  "RV Taproom": {
+    "address": "4927 Sonoma Hwy, Santa Rosa, CA 95409",
+    "website": "https://www.rvtaproom.com/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Rincon+Valley+Taproom+Santa+Rosa"
+  },
+  "Shady Oak": {
+    "address": "420 1st St, Santa Rosa, CA 95401",
+    "website": "https://shadyoakbarrelhouse.com/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Shady+Oak+Barrel+House+Santa+Rosa"
+  },
+  "Windsor Town Green": {
+    "address": "701 McClelland Dr, Windsor, CA 95492",
+    "website": "https://www.townofwindsor.com/",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Windsor+Town+Green+Windsor"
+  }
+}
