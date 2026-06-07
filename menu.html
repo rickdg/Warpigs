@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Smokehouse Menu — War Pigs Craft Kitchen</title>
+  <meta name="description" content="Explore our slow-smoked barbecue menu, featuring Texas-style brisket, St. Louis ribs, pulled pork, and scratch-made sides.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Custom styles for the Menu Page */
+    .menu-hero {
+      position: relative;
+      padding: 12rem 2rem 6rem;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(17, 17, 17, 0.5) 0%, var(--bg-dark) 100%);
+      overflow: hidden;
+    }
+    .menu-hero__glow {
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(232, 70, 30, 0.12), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .menu-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .menu-hero__desc {
+      color: var(--cream-60);
+      font-size: 1.2rem;
+      max-width: 36rem;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .menu-container {
+      padding: 4rem 2rem 10rem;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .menu-category {
+      margin-bottom: 6rem;
+    }
+    .menu-category__header {
+      border-bottom: 1px solid var(--cream-10);
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .menu-category__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+    }
+    .menu-category__subtitle {
+      color: var(--ember);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.85rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .menu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--cream-10);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.4s var(--ease-out-expo);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .menu-card:hover {
+      border-color: rgba(232, 70, 30, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+    }
+    .menu-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .menu-card__title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+    }
+    .menu-card__price {
+      font-family: var(--font-display);
+      color: var(--ember);
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+    }
+    .menu-card__desc {
+      color: var(--cream-60);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .menu-card__meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .menu-tag {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+    }
+    .menu-tag--ember {
+      background: rgba(232, 70, 30, 0.1);
+      border: 1px solid rgba(232, 70, 30, 0.25);
+      color: var(--ember);
+    }
+    .menu-tag--cream {
+      background: rgba(245, 240, 232, 0.05);
+      border: 1px solid var(--cream-10);
+      color: var(--cream-60);
+    }
+
+    .menu-footer-note {
+      text-align: center;
+      padding: 3rem;
+      background: var(--bg-section);
+      border-radius: 1rem;
+      border: 1px solid var(--cream-10);
+      margin-top: 4rem;
+    }
+    .menu-footer-note h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--cream);
+    }
+    .menu-footer-note p {
+      color: var(--cream-60);
+      font-size: 0.95rem;
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .menu-category__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .menu-hero {
+        padding-top: 10rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="navbar">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand">
+        <img src="assets/warpigs-logo.png" alt="War Pigs Craft Kitchen" class="nav__logo" width="144" height="144">
+        <span class="nav__name">WAR PIGS</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" class="nav__link" data-nav-link>Home</a>
+        <a href="index.html#schedule" class="nav__link" data-nav-link>Schedule</a>
+        <a href="index.html#story" class="nav__link" data-nav-link>Story</a>
+        <a href="index.html#contact" class="nav__cta" data-nav-link>Book Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="menu-hero">
+      <div class="menu-hero__glow"></div>
+      <div class="container reveal">
+        <div class="section-label">Our Offerings</div>
+        <h1 class="menu-hero__title">The Smokehouse Spread</h1>
+        <p class="menu-hero__desc">
+          Low and slow wood-fired barbecue, prepared daily. All meats are dry-rubbed, slow-smoked over seasoned post oak, and served pit-fresh.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ DIVIDER ============ -->
+    <div class="divider"><div class="divider__line"></div></div>
+
+    <!-- ============ MENU SECTIONS ============ -->
+    <section class="menu-container">
+      
+      <!-- CATEGORY: MEATS -->
+      <div class="menu-category">
+        <div class="menu-category__header reveal">
+          <h2 class="menu-category__title">Smoked Meats</h2>
+          <span class="menu-category__subtitle">Priced per half-pound</span>
+        </div>
+        <div class="menu-grid">
+          
+          <div class="menu-card reveal reveal-d1">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">Beef Brisket</h3>
+                <span class="menu-card__price">$16</span>
+              </div>
+              <p class="menu-card__desc">
+                Our signature cut. Angus beef brisket dry-rubbed with black pepper and kosher salt, then slow-smoked for 14 hours over seasoned post oak. Meltingly tender with a deep mahogany bark.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--ember">Signature</span>
+              <span class="menu-tag menu-tag--cream">Oak-Smoked 14hr</span>
+            </div>
+          </div>
+
+          <div class="menu-card reveal reveal-d2">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">St. Louis Pork Ribs</h3>
+                <span class="menu-card__price">$14</span>
+              </div>
+              <p class="menu-card__desc">
+                Meaty, center-cut pork spareribs seasoned with our proprietary sweet-and-spicy rub. Smoked until bite-off-the-bone tender and finished with a light glaze.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--ember">Best Seller</span>
+              <span class="menu-tag menu-tag--cream">Glazed</span>
+            </div>
+          </div>
+
+          <div class="menu-card reveal reveal-d3">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">Carolina Pulled Pork</h3>
+                <span class="menu-card__price">$12</span>
+              </div>
+              <p class="menu-card__desc">
+                Pork shoulder rubbed with brown sugar and spices, smoked for 10 hours until shredded. Splashed with a tangy North Carolina cider vinegar sauce.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--cream">Cider Vinegar Sauce</span>
+            </div>
+          </div>
+
+          <div class="menu-card reveal reveal-d4">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">House Hot Links</h3>
+                <span class="menu-card__price">$11</span>
+              </div>
+              <p class="menu-card__desc">
+                Custom coarse-ground pork sausage loaded with fresh garlic, cayenne, and black pepper. Snappy natural casing and heavily kissed by oak smoke.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--cream">Spicy</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY: SIDES -->
+      <div class="menu-category">
+        <div class="menu-category__header reveal">
+          <h2 class="menu-category__title">Scratch Sides</h2>
+          <span class="menu-category__subtitle">Priced per pint</span>
+        </div>
+        <div class="menu-grid">
+
+          <div class="menu-card reveal reveal-d1">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">Cast-Iron Cornbread</h3>
+                <span class="menu-card__price">$6</span>
+              </div>
+              <p class="menu-card__desc">
+                Sweet corn cake baked to a golden crust in real cast-iron skillets. Served with a side of whipped honey-cinnamon butter.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--ember">Fresh Baked</span>
+            </div>
+          </div>
+
+          <div class="menu-card reveal reveal-d2">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">Smoked Pit Beans</h3>
+                <span class="menu-card__price">$7</span>
+              </div>
+              <p class="menu-card__desc">
+                A rich mixture of navy, pinto, and kidney beans baked underneath our brisket flat. Loaded with burnt ends, brown sugar, molasses, and onion.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--ember">Loaded</span>
+              <span class="menu-tag menu-tag--cream">Burnt Ends</span>
+            </div>
+          </div>
+
+          <div class="menu-card reveal reveal-d3">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">Classic Potato Salad</h3>
+                <span class="menu-card__price">$7</span>
+              </div>
+              <p class="menu-card__desc">
+                Creamy mustard-mayo red potato salad tossed with celery, hard-boiled eggs, fresh dill, and a dash of sweet pickle relish.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--cream">Southern Style</span>
+            </div>
+          </div>
+
+          <div class="menu-card reveal reveal-d4">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">Tangy Coleslaw</h3>
+                <span class="menu-card__price">$6</span>
+              </div>
+              <p class="menu-card__desc">
+                Shredded green and red cabbage, carrots, and scallions in a light, vinegar-forward dressing. Crispy, fresh, and perfect for cuttin' through rich meats.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--cream">Crisp & Tangy</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY: PLATTERS -->
+      <div class="menu-category">
+        <div class="menu-category__header reveal">
+          <h2 class="menu-category__title">Combos &amp; Feasts</h2>
+          <span class="menu-category__subtitle">Great for sharing</span>
+        </div>
+        <div class="menu-grid">
+
+          <div class="menu-card reveal reveal-d1">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">The Pitmaster Platter</h3>
+                <span class="menu-card__price">$45</span>
+              </div>
+              <p class="menu-card__desc">
+                A perfect sample for two. Includes 1/2 lb Beef Brisket, 1/2 slab St. Louis Ribs, 1 Hot Link, 2 small sides of your choice, and 2 squares of cornbread.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--ember">Feeds 2</span>
+              <span class="menu-tag menu-tag--cream">Sampler</span>
+            </div>
+          </div>
+
+          <div class="menu-card reveal reveal-d2">
+            <div>
+              <div class="menu-card__header">
+                <h3 class="menu-card__title">The Warpigs Feast</h3>
+                <span class="menu-card__price">$95</span>
+              </div>
+              <p class="menu-card__desc">
+                Built to satisfy the whole crew. Includes 1 lb Brisket, 1 lb Pulled Pork, 1 full slab St. Louis Ribs, 2 Hot Links, 2 pints of scratch sides, and 4 squares of cornbread.
+              </p>
+            </div>
+            <div class="menu-card__meta">
+              <span class="menu-tag menu-tag--ember">Feeds 4-6</span>
+              <span class="menu-tag menu-tag--cream">Value Pack</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FOOTER NOTE -->
+      <div class="menu-footer-note reveal">
+        <h3>Catering &amp; Custom Orders</h3>
+        <p>
+          Need to feed a larger crowd? We offer custom pop-up options, bulk party trays, and full-service catering. Get in touch to customize a menu for your next event.
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <a href="index.html#contact" class="btn-primary">Book Catering</a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/warpigs-logo.png" alt="War Pigs BBQ Logo" class="footer__logo" width="168" height="168">
+        <div>
+          <span class="footer__name">WAR PIGS</span>
+          <div class="footer__sub">Craft Kitchen &amp; BBQ</div>
+        </div>
+      </div>
+      <div class="footer__copy" id="footerYear">
+        <!-- Year updated by script -->
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ——— Footer year ———
+    document.getElementById('footerYear').textContent =
+      `© ${new Date().getFullYear()} War Pigs BBQ. All rights reserved.`;
+
+    // ——— Navbar scroll shrink ———
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+      lastScroll = window.scrollY;
+    }, { passive: true });
+
+    // ——— Mobile nav toggle ———
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('[data-nav-link]').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ——— Scroll-triggered animations ———
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .slide-left, .slide-right, .scale-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ——— Inject Particles into all sections ———
+    document.querySelectorAll('section, footer').forEach(section => {
+      const particles = document.createElement('div');
+      particles.className = 'particles';
+      particles.setAttribute('aria-hidden', 'true');
+      for(let i=0; i<8; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        particles.appendChild(p);
+      }
+      section.insertBefore(particles, section.firstChild);
+    });
+  </script>
+
+</body>
+</html>
