@@ -1,0 +1,50 @@
+[
+  {
+    "date": "SAT · JUN 6",
+    "venue": "Shady Oak",
+    "city": "Santa Rosa",
+    "time": "4:00 to 10:00"
+  },
+  {
+    "date": "THU · JUN 11",
+    "venue": "RV Taproom",
+    "city": "Santa Rosa",
+    "time": "5:00 to 9:00"
+  },
+  {
+    "date": "SAT · JUN 13",
+    "venue": "Parliament Brewery",
+    "city": "Rohnert Park",
+    "time": "TBA"
+  },
+  {
+    "date": "FRI · JUN 19",
+    "venue": "Mercy Lounge",
+    "city": "Cotati",
+    "time": "TBA"
+  },
+  {
+    "date": "SAT · JUN 20",
+    "venue": "Chateau Diana",
+    "city": "Healdsburg",
+    "time": "TBA"
+  },
+  {
+    "date": "WED · JUN 24",
+    "venue": "Parliament Brewery",
+    "city": "Rohnert Park",
+    "time": "TBA"
+  },
+  {
+    "date": "FRI · JUN 26",
+    "venue": "Shady Oak",
+    "city": "Santa Rosa",
+    "time": "TBA"
+  },
+  {
+    "date": "SUN · JUN 28",
+    "venue": "Mercy Lounge",
+    "city": "Cotati",
+    "time": "TBA"
+  }
+]

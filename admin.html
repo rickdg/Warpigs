@@ -27,7 +27,7 @@
       <div class="nav__links" id="navLinks">
         <a href="index.html" class="nav__link" data-nav-link>Home</a>
         <a href="menu.html" class="nav__link" data-nav-link>Menu</a>
-        <a href="index.html#schedule" class="nav__link" data-nav-link>Schedule</a>
+        <a href="index.html#schedule" class="nav__link" data-nav-link>Upcoming Events</a>
         <a href="index.html#contact" class="nav__cta" data-nav-link>Book Us</a>
       </div>
     </div>
@@ -77,14 +77,14 @@
             </p>
 
             <button class="btn-outline btn-block" id="saveFileBtn">
-              Save to Disk (schedule.js)
+              Save to Disk (schedule.json)
             </button>
             <p style="font-size: 0.7rem; color: var(--cream-30); margin-top: -0.5rem; margin-bottom: 1.25rem; text-align: center;">
-              Directly updates schedule.js in the project folder (requires Chrome/Edge permission).
+              Directly updates schedule.json in the project folder (requires Chrome/Edge permission).
             </p>
 
             <button class="btn-outline btn-block" id="downloadBtn" style="border-color: var(--cream-30); color: var(--cream-60);">
-              Download schedule.js File
+              Download schedule.json File
             </button>
           </div>
 
@@ -98,7 +98,7 @@
 
           <div class="sidebar-card">
             <h3>File Content Code</h3>
-            <p>If manual copying is preferred, copy this generated code and paste it inside <code>schedule.js</code>.</p>
+            <p>If manual copying is preferred, copy this generated code and paste it inside <code>schedule.json</code>.</p>
             <button class="btn-outline btn-block" id="copyCodeBtn" style="font-size: 0.75rem; padding: 0.5rem 1rem;">
               Copy to Clipboard
             </button>
@@ -132,7 +132,10 @@
     <span id="toastMsg">Changes saved!</span>
   </div>
 
-  <script src="schedule.js"></script>
+  <!-- City autocomplete datalist -->
+  <datalist id="citiesDatalist"></datalist>
+  <datalist id="venuesDatalist"></datalist>
+
   <script src="main.js" defer></script>
   <script src="admin.js" defer></script>
 
