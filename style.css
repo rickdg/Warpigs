@@ -17,9 +17,9 @@
   --cream-60: #f5f0e899;
   --cream-30: #f5f0e84d;
   --cream-10: #f5f0e81a;
-  --ember: #e8461e;
-  --ember-glow: #ff6b3d;
-  --ember-dark: #b83415;
+  --ember: #c3161d;
+  --ember-glow: #e04349;
+  --ember-dark: #9c1015;
   --amber: #f59e0b;
 
   --font-display: "Bebas Neue", "Impact", sans-serif;
@@ -254,7 +254,7 @@ button { font-family: inherit; }
 }
 .nav__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(232, 70, 30, 0.4);
+  box-shadow: 0 8px 30px rgba(195, 22, 29, 0.4);
 }
 .nav__cta:hover::before { opacity: 1; }
 
@@ -312,7 +312,7 @@ button { font-family: inherit; }
   left: -100px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(232,70,30,0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(195, 22, 29,0.15), transparent 70%);
   border-radius: 50%;
   animation: glow-pulse 4s ease-in-out infinite;
   pointer-events: none;
@@ -340,8 +340,8 @@ button { font-family: inherit; }
   letter-spacing: 0.25em;
   font-size: 0.8rem;
   margin-bottom: 2rem;
-  background: rgba(232, 70, 30, 0.1);
-  border: 1px solid rgba(232, 70, 30, 0.25);
+  background: rgba(195, 22, 29, 0.1);
+  border: 1px solid rgba(195, 22, 29, 0.25);
   padding: 0.5rem 1.25rem;
   border-radius: 9999px;
 }
@@ -357,7 +357,7 @@ button { font-family: inherit; }
 }
 .hero__title .ember {
   color: var(--ember);
-  text-shadow: 0 0 60px rgba(232, 70, 30, 0.3);
+  text-shadow: 0 0 60px rgba(195, 22, 29, 0.3);
 }
 .hero__desc {
   margin-top: 2.5rem;
@@ -404,7 +404,7 @@ button { font-family: inherit; }
 }
 .btn-primary:hover::before { left: 100%; }
 .btn-primary:hover {
-  box-shadow: 0 12px 40px rgba(232, 70, 30, 0.5);
+  box-shadow: 0 12px 40px rgba(195, 22, 29, 0.5);
   transform: translateY(-3px);
 }
 .btn-primary svg {
@@ -505,7 +505,7 @@ button { font-family: inherit; }
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(232,70,30,0.08), transparent 70%);
+  background: radial-gradient(circle, rgba(195, 22, 29,0.08), transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   animation: glow-pulse 5s ease-in-out infinite;
@@ -529,7 +529,7 @@ button { font-family: inherit; }
 }
 .quote__text .ember {
   color: var(--ember);
-  text-shadow: 0 0 40px rgba(232, 70, 30, 0.25);
+  text-shadow: 0 0 40px rgba(195, 22, 29, 0.25);
 }
 .quote__attr {
   margin-top: 3rem;
@@ -594,7 +594,7 @@ button { font-family: inherit; }
 }
 .section-title .ember {
   color: var(--ember);
-  text-shadow: 0 0 40px rgba(232, 70, 30, 0.2);
+  text-shadow: 0 0 40px rgba(195, 22, 29, 0.2);
 }
 .menu__desc {
   margin-top: 2rem;
@@ -634,7 +634,7 @@ button { font-family: inherit; }
 }
 .menu__item:hover .menu__dot {
   transform: scale(1.4);
-  box-shadow: 0 0 12px rgba(232, 70, 30, 0.6);
+  box-shadow: 0 0 12px rgba(195, 22, 29, 0.6);
 }
 .menu__image-wrap {
   position: relative;
@@ -660,7 +660,7 @@ button { font-family: inherit; }
   letter-spacing: 0.08em;
   padding: 0.75rem 1.75rem;
   border-radius: 0.5rem;
-  box-shadow: 0 12px 30px rgba(232, 70, 30, 0.4);
+  box-shadow: 0 12px 30px rgba(195, 22, 29, 0.4);
   animation: badge-float 3s ease-in-out infinite;
 }
 @keyframes badge-float {
@@ -706,7 +706,7 @@ button { font-family: inherit; }
   cursor: pointer;
 }
 .schedule__row:hover {
-  background: rgba(232, 70, 30, 0.06);
+  background: rgba(195, 22, 29, 0.06);
   padding-left: 2.5rem;
 }
 .schedule__date {
@@ -854,7 +854,7 @@ button { font-family: inherit; }
 }
 .services__title .ember {
   color: var(--ember);
-  text-shadow: 0 0 40px rgba(232, 70, 30, 0.2);
+  text-shadow: 0 0 40px rgba(195, 22, 29, 0.2);
 }
 .services__grid {
   display: grid;
@@ -884,7 +884,7 @@ button { font-family: inherit; }
 }
 .service-card:hover::before { transform: scaleX(1); }
 .service-card:hover {
-  border-color: rgba(232, 70, 30, 0.3);
+  border-color: rgba(195, 22, 29, 0.3);
   transform: translateY(-8px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
@@ -979,7 +979,7 @@ button { font-family: inherit; }
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.5rem;
-  background: rgba(232, 70, 30, 0.15);
+  background: rgba(195, 22, 29, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1035,7 +1035,7 @@ button { font-family: inherit; }
 .social-btn:hover {
   background: var(--ember);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(232, 70, 30, 0.4);
+  box-shadow: 0 8px 20px rgba(195, 22, 29, 0.4);
 }
 .social-btn svg { width: 1.2rem; height: 1.2rem; }
 
@@ -1202,7 +1202,7 @@ button { font-family: inherit; }
   border: 1px solid rgba(229, 219, 203, 0.1);
   border-radius: 1.25rem;
   padding: 2.25rem 2rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(230, 92, 0, 0.15) inset;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(195, 22, 29, 0.15) inset;
   transform: translateY(20px) scale(0.95);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }

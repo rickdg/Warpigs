@@ -13,7 +13,7 @@
   transform: translateX(-50%);
   width: 800px;
   height: 400px;
-  background: radial-gradient(circle, rgba(232, 70, 30, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(195, 22, 29, 0.12), transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -84,7 +84,7 @@
   justify-content: space-between;
 }
 .menu-card:hover {
-  border-color: rgba(232, 70, 30, 0.3);
+  border-color: rgba(195, 22, 29, 0.3);
   transform: translateY(-5px);
   box-shadow: 0 20px 45px rgba(0,0,0,0.3);
 }
@@ -130,8 +130,8 @@
   border-radius: 9999px;
 }
 .menu-tag--ember {
-  background: rgba(232, 70, 30, 0.1);
-  border: 1px solid rgba(232, 70, 30, 0.25);
+  background: rgba(195, 22, 29, 0.15);
+  border: 1px solid rgba(195, 22, 29, 0.25);
   color: var(--ember);
 }
 .menu-tag--cream {

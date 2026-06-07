@@ -90,7 +90,7 @@
 .form-control:focus {
   outline: none;
   border-color: var(--ember);
-  box-shadow: 0 0 10px rgba(232, 70, 30, 0.25);
+  box-shadow: 0 0 10px rgba(195, 22, 29, 0.25);
 }
 
 .row-actions {
