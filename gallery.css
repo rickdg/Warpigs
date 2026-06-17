@@ -1,0 +1,143 @@
+/* Custom styles for the Gallery Page */
+.gallery-hero {
+  position: relative;
+  padding: 12rem 2rem 6rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0.5) 0%, var(--bg-dark) 100%);
+  overflow: hidden;
+}
+
+.gallery-hero__glow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(195, 22, 29, 0.12), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gallery-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-hero__desc {
+  color: var(--cream-60);
+  font-size: 1.2rem;
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.gallery-container {
+  padding: 4rem 2rem 10rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--bg-card);
+  display: block;
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+  border: 1px solid var(--cream-10);
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(195, 22, 29, 0.3);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+}
+
+.gallery-item__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.gallery-item:hover .gallery-item__img {
+  transform: scale(1.05);
+}
+
+.gallery-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(17, 17, 17, 0.9) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.gallery-item:hover .gallery-item__overlay {
+  opacity: 1;
+}
+
+.gallery-item__icon {
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+}
+
+.instagram-cta {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bg-section);
+  border-radius: 1rem;
+  border: 1px solid var(--cream-10);
+  margin-top: 4rem;
+}
+
+.instagram-cta h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--cream);
+}
+
+.instagram-cta p {
+  color: var(--cream-60);
+  font-size: 0.95rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .gallery-hero {
+    padding-top: 10rem;
+  }
+}
+
+/* Hide Elfsight Widget Branding */
+a[href*="elfsight.com"] {
+  display: none !important;
+}

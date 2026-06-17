@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — War Pigs Craft Kitchen</title>
+  <meta name="description" content="Check out the latest from the War Pigs BBQ pit. Follow us on Instagram for more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="navbar">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand">
+        <img src="assets/warpigs-logo.png" alt="War Pigs Craft Kitchen" class="nav__logo" width="144" height="144">
+        <span class="nav__name">WAR PIGS</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav__links" id="navLinks">
+        <a href="https://warpigsbbq.square.site/" target="_blank" rel="noopener noreferrer" class="nav__cta" data-nav-link>Order Online</a>
+        <a href="index.html" class="nav__link" data-nav-link>Home</a>
+        <a href="menu.html" class="nav__link" data-nav-link>Menu</a>
+        <a href="gallery.html" class="nav__link" data-nav-link>Gallery</a>
+        <a href="index.html#schedule" class="nav__link" data-nav-link>Upcoming Events</a>
+        <a href="index.html#contact" class="nav__cta" data-nav-link>Book Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="gallery-hero">
+      <div class="gallery-hero__glow"></div>
+      <div class="container reveal">
+        <div class="section-label">Follow The Smoke</div>
+        <h1 class="gallery-hero__title">The Gallery</h1>
+        <p class="gallery-hero__desc">
+          Latest posts from the pit. Click any image to view on Instagram and give us a follow.
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <a href="https://www.instagram.com/warpigs_craft_kitchen/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            @warpigs_craft_kitchen
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DIVIDER ============ -->
+    <div class="divider"><div class="divider__line"></div></div>
+
+    <!-- ============ GALLERY GRID ============ -->
+    <section class="gallery-container">
+      
+      <div class="gallery-grid-widget">
+        <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-ae9055ce-9be2-4b1b-a919-6a3b2775f4c2" data-elfsight-app-lazy></div>
+      </div>
+
+      <!-- FOOTER NOTE -->
+      <div class="instagram-cta reveal">
+        <h3>Want more BBQ?</h3>
+        <p>
+          Follow us to get the latest updates on our pop-ups, new menu items, and behind-the-scenes action.
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <a href="https://www.instagram.com/warpigs_craft_kitchen/" target="_blank" rel="noopener noreferrer" class="btn-outline">Visit Instagram Profile</a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/warpigs-logo.png" alt="War Pigs BBQ Logo" class="footer__logo" width="168" height="168">
+        <div>
+          <span class="footer__name">WAR PIGS</span>
+          <div class="footer__sub">Craft Kitchen &amp; BBQ</div>
+        </div>
+      </div>
+      <div class="footer__copy" id="footerYear">
+        <!-- Year updated by script -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+  
+  <!-- Forcefully hide Elfsight branding even if it is injected inside a Shadow DOM -->
+  <script>
+    setInterval(function() {
+      // 1. Hide any global links
+      var links = document.querySelectorAll('a[href*="elfsight.com"]');
+      for (var i = 0; i < links.length; i++) {
+        links[i].style.display = 'none';
+      }
+      
+      // 2. Hide links inside the widget's Shadow DOM
+      var widget = document.querySelector('.elfsight-app-ae9055ce-9be2-4b1b-a919-6a3b2775f4c2');
+      if (widget && widget.shadowRoot) {
+        var shadowLinks = widget.shadowRoot.querySelectorAll('a[href*="elfsight.com"]');
+        for (var j = 0; j < shadowLinks.length; j++) {
+          shadowLinks[j].style.display = 'none';
+        }
+        
+        var eappsLink = widget.shadowRoot.querySelector('.eapps-link');
+        if (eappsLink) {
+          eappsLink.style.display = 'none';
+        }
+      }
+    }, 500);
+  </script>
+
+</body>
+</html>
