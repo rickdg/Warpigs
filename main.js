@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.addEventListener('click', () => {
       navToggle.classList.toggle('active');
       navLinks.classList.toggle('open');
+      if (navbar) navbar.classList.toggle('menu-open', navLinks.classList.contains('open'));
       document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
     });
 
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navLinks.classList.remove('open');
+        if (navbar) navbar.classList.remove('menu-open');
         document.body.style.overflow = '';
       });
     });

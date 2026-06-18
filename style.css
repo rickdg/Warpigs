@@ -175,6 +175,11 @@ button { font-family: inherit; }
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--cream-10);
 }
+.nav.menu-open {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(10, 10, 10, 0.97) !important;
+}
 .nav__inner {
   max-width: 80rem;
   margin: 0 auto;
