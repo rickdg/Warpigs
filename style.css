@@ -164,7 +164,7 @@ button { font-family: inherit; }
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: 99999;
   padding: 1.5rem 0;
   transition: all 0.5s var(--ease-out-expo);
 }
@@ -1112,26 +1112,32 @@ button { font-family: inherit; }
 
 @media (max-width: 768px) {
   .nav.menu-open {
-    height: 100vh !important;
-    height: 100dvh !important;
-    background: var(--bg-dark) !important;
+    background: #0a0a0a !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
   .nav__links {
     display: none;
-    position: absolute;
-    inset: 0;
-    background: transparent;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    background: #0a0a0a !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
     font-size: 1.4rem;
-    z-index: 100;
+    z-index: 999998 !important;
   }
-  .nav__links.open { display: flex; }
-  .nav__toggle { display: block; }
+  .nav__links.open { display: flex !important; }
+  .nav__toggle { 
+    display: block !important; 
+    position: relative;
+    z-index: 999999 !important;
+  }
   .nav__name { display: none; }
 
   .hero__scroll { display: none; }
