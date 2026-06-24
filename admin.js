@@ -39,48 +39,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4000);
   }
 
-  // Fallback save using browser picker or download
-  async function fallbackSave(filename, content) {
-    if (window.showSaveFilePicker) {
-      try {
-        const options = {
-          suggestedName: filename,
-          types: [{
-            description: 'JSON Data File',
-            accept: { 'application/json': ['.json'] }
-          }]
-        };
-        const handle = await window.showSaveFilePicker(options);
-        const writable = await handle.createWritable();
-        await writable.write(content);
-        await writable.close();
-        showToast(`${filename} saved successfully!`);
-        return;
-      } catch (err) {
-        if (err.name === 'AbortError') return; // User cancelled
-        console.warn('File picker failed, falling back to download', err);
-      }
-    }
-    downloadFile(filename, content);
-  }
-
-  // Generic save via PUT to local dev server (with automatic browser fallback)
+  // Generic save via PUT to local dev server (or Vercel Serverless Function on production)
   async function saveToFile(filename, content) {
-    try {
-      const response = await fetch(filename, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: content
-      });
-      if (response.ok) {
-        showToast(`${filename} saved automatically to disk!`);
-      } else {
-        console.warn(`Server PUT returned status ${response.status}. Falling back to browser save.`);
-        await fallbackSave(filename, content);
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+    if (isLocal) {
+      // Local dev server flow
+      try {
+        const response = await fetch(filename, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: content
+        });
+        if (response.ok) {
+          showToast(`${filename} saved automatically to local disk!`);
+        } else {
+          console.warn(`Local PUT returned status ${response.status}. falling back to download.`);
+          downloadFile(filename, content);
+        }
+      } catch (err) {
+        console.warn('Local PUT failed. falling back to download.', err);
+        downloadFile(filename, content);
       }
-    } catch (err) {
-      console.warn('Server PUT connection failed. Falling back to browser save.', err);
-      await fallbackSave(filename, content);
+    } else {
+      // Production serverless flow (save to GitHub in the background)
+      let password = localStorage.getItem('warpigs_admin_password');
+      if (!password) {
+        password = prompt('Enter Admin Password to update the live site:');
+        if (!password) {
+          showToast('Save cancelled: Password required.', 'error');
+          return;
+        }
+        localStorage.setItem('warpigs_admin_password', password);
+      }
+
+      showToast('Saving to GitHub in the background...');
+
+      try {
+        const response = await fetch('/api/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ filename, content, password })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          showToast('Changes committed to GitHub! Live site will update in 1 minute.');
+        } else {
+          if (response.status === 401) {
+            localStorage.removeItem('warpigs_admin_password');
+            showToast('Invalid password. Please try again.', 'error');
+          } else {
+            showToast('Save failed: ' + (result.error || 'Unknown error'), 'error');
+          }
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Connection failed: ' + err.message, 'error');
+      }
     }
   }
 
