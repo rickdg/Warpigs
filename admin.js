@@ -39,7 +39,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4000);
   }
 
-  // Generic save via PUT to local dev server
+  // Fallback save using browser picker or download
+  async function fallbackSave(filename, content) {
+    if (window.showSaveFilePicker) {
+      try {
+        const options = {
+          suggestedName: filename,
+          types: [{
+            description: 'JSON Data File',
+            accept: { 'application/json': ['.json'] }
+          }]
+        };
+        const handle = await window.showSaveFilePicker(options);
+        const writable = await handle.createWritable();
+        await writable.write(content);
+        await writable.close();
+        showToast(`${filename} saved successfully!`);
+        return;
+      } catch (err) {
+        if (err.name === 'AbortError') return; // User cancelled
+        console.warn('File picker failed, falling back to download', err);
+      }
+    }
+    downloadFile(filename, content);
+  }
+
+  // Generic save via PUT to local dev server (with automatic browser fallback)
   async function saveToFile(filename, content) {
     try {
       const response = await fetch(filename, {
@@ -47,11 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: { 'Content-Type': 'application/json' },
         body: content
       });
-      if (!response.ok) throw new Error(`Server returned ${response.status}`);
-      showToast(`${filename} saved successfully!`);
+      if (response.ok) {
+        showToast(`${filename} saved automatically to disk!`);
+      } else {
+        console.warn(`Server PUT returned status ${response.status}. Falling back to browser save.`);
+        await fallbackSave(filename, content);
+      }
     } catch (err) {
-      console.error(err);
-      showToast('Save failed: ' + err.message, 'error');
+      console.warn('Server PUT connection failed. Falling back to browser save.', err);
+      await fallbackSave(filename, content);
     }
   }
 
