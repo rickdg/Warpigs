@@ -6,7 +6,7 @@
   min-height: calc(100vh - 150px);
 }
 .admin-header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   border-bottom: 1px solid var(--cream-10);
   padding-bottom: 1.5rem;
   display: flex;
@@ -28,10 +28,93 @@
   margin-top: 0.5rem;
 }
 
+/* ====== TABS ====== */
+.admin-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid var(--cream-10);
+  padding-bottom: 0;
+  position: relative;
+}
+.admin-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.75rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--cream-30);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.35s var(--ease-out-expo);
+  position: relative;
+  margin-bottom: -2px;
+}
+.admin-tab svg {
+  opacity: 0.5;
+  transition: opacity 0.35s;
+}
+.admin-tab:hover {
+  color: var(--cream-60);
+  background: rgba(255, 255, 255, 0.02);
+}
+.admin-tab:hover svg {
+  opacity: 0.7;
+}
+.admin-tab.active {
+  color: var(--cream);
+  border-bottom-color: var(--ember);
+}
+.admin-tab.active svg {
+  opacity: 1;
+  color: var(--ember);
+}
+
+/* Tab glow effect on active */
+.admin-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--ember);
+  box-shadow: 0 0 12px rgba(195, 22, 29, 0.4), 0 0 30px rgba(195, 22, 29, 0.15);
+}
+
+/* ====== TAB PANELS ====== */
+.tab-panel {
+  display: none;
+  animation: tabFadeIn 0.4s ease;
+}
+.tab-panel.active {
+  display: block;
+}
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== LAYOUT ====== */
 .admin-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 280px;
   gap: 3rem;
+}
+#panelStory .admin-grid {
+  grid-template-columns: 1fr 500px;
 }
 
 .editor-section {
@@ -41,6 +124,48 @@
   padding: 2.5rem;
 }
 
+/* ====== EDITOR GROUPS (story/contact) ====== */
+.editor-group {
+  margin-bottom: 2.25rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid var(--cream-10);
+}
+.editor-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.editor-group__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+.editor-group__title svg {
+  color: var(--ember);
+  opacity: 0.8;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.form-row:last-child {
+  margin-bottom: 0;
+}
+.form-group--wide {
+  grid-column: 1 / -1;
+}
+
+/* ====== EVENT LIST ====== */
 .event-list {
   display: flex;
   flex-direction: column;
@@ -64,6 +189,7 @@
   border-color: rgba(255, 255, 255, 0.15);
 }
 
+/* ====== FORM CONTROLS ====== */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -92,7 +218,79 @@
   border-color: var(--ember);
   box-shadow: 0 0 10px rgba(195, 22, 29, 0.25);
 }
+.form-textarea {
+  resize: vertical;
+  min-height: 5rem;
+  line-height: 1.6;
+  font-family: var(--font-body);
+}
 
+/* ====== PARAGRAPH EDITORS ====== */
+.paragraph-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+.paragraph-row textarea {
+  flex: 1;
+  background: var(--bg-dark);
+  border: 1px solid var(--cream-10);
+  color: var(--cream);
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  resize: vertical;
+  min-height: 6rem;
+  transition: all 0.3s;
+}
+.paragraph-row textarea:focus {
+  outline: none;
+  border-color: var(--ember);
+  box-shadow: 0 0 10px rgba(195, 22, 29, 0.25);
+}
+.paragraph-row .paragraph-number {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream-10);
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--cream-60);
+  margin-top: 0.5rem;
+}
+.paragraph-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+/* ====== STAT ROWS ====== */
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--cream-10);
+  padding: 1rem;
+  border-radius: 0.6rem;
+  transition: all 0.3s;
+}
+.stat-row:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ====== BUTTON STYLES ====== */
 .row-actions {
   display: flex;
   gap: 0.5rem;
@@ -111,6 +309,7 @@
   background: rgba(255, 255, 255, 0.02);
   color: var(--cream-60);
   transition: all 0.3s;
+  flex-shrink: 0;
 }
 .icon-btn:hover {
   color: var(--cream);
@@ -148,7 +347,7 @@
   background: rgba(255, 255, 255, 0.02);
 }
 
-/* Sidebar Actions */
+/* ====== SIDEBAR ====== */
 .actions-sidebar {
   display: flex;
   flex-direction: column;
@@ -185,7 +384,7 @@
   margin-bottom: 0.75rem;
 }
 
-/* Toast notification */
+/* ====== TOAST ====== */
 .toast {
   position: fixed;
   bottom: 2rem;
@@ -212,7 +411,7 @@
   border-color: #ff4444;
 }
 
-/* Code Preview */
+/* ====== CODE PREVIEW ====== */
 .code-preview {
   background: #050505;
   border: 1px solid var(--cream-10);
@@ -227,17 +426,33 @@
   white-space: pre;
 }
 
+/* ====== RESPONSIVE ====== */
 @media (max-width: 1024px) {
   .admin-grid {
     grid-template-columns: 1fr;
   }
 }
 @media (max-width: 768px) {
+  .admin-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-tab {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
   .event-row {
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
   }
   .event-row > .form-group:nth-child(5) {
     grid-column: 1 / -1;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .stat-row {
+    grid-template-columns: 1fr;
   }
 }
