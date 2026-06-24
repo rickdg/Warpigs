@@ -13,6 +13,30 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"></head>
 <body>
 
+  <!-- ============ LOGIN MODAL ============ -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-modal__card">
+      <div class="login-modal__logo-wrap">
+        <img src="assets/warpigs-logo.png" alt="War Pigs Logo" class="login-modal__logo" width="48" height="48">
+      </div>
+      <h2 class="login-modal__title">Admin Login</h2>
+      <p class="login-modal__subtitle">Enter your credentials to manage the site content.</p>
+      
+      <form id="loginForm">
+        <div class="form-group" style="text-align: left; margin-bottom: 1.25rem;">
+          <label for="loginEmail" style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--cream-60);">Email Address</label>
+          <input type="email" id="loginEmail" class="form-control" placeholder="e.g. larrywarpigs@gmail.com" required autocomplete="username" style="width: 100%;">
+        </div>
+        <div class="form-group" style="text-align: left; margin-bottom: 1.5rem;">
+          <label for="loginPassword" style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--cream-60);">Password</label>
+          <input type="password" id="loginPassword" class="form-control" placeholder="••••••••••••" required autocomplete="current-password" style="width: 100%;">
+        </div>
+        <div id="loginError" class="login-modal__error" style="display: none;"></div>
+        <button type="submit" class="btn-primary btn-block" style="width: 100%;">Log In</button>
+      </form>
+    </div>
+  </div>
+
   <!-- ============ NAVIGATION ============ -->
   <nav class="nav" id="navbar">
     <div class="nav__inner">
@@ -46,8 +70,9 @@
           <h1 class="admin-title">Site Manager</h1>
           <p class="admin-subtitle">Update your site content — schedule, story, and contact info — all from one place.</p>
         </div>
-        <div style="display: flex; gap: 1rem;">
+        <div style="display: flex; gap: 1rem; align-items: center;">
           <a href="index.html" target="_blank" class="btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.75rem;">View Home Page</a>
+          <button id="logoutBtn" class="btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.75rem; border-color: rgba(255, 68, 68, 0.2); color: #ff4444; background: rgba(255, 68, 68, 0.02); display: none;">Log Out</button>
         </div>
       </div>
 

@@ -6,6 +6,70 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ═══════════════════════════════════════════
+  //  AUTHENTICATION SYSTEM
+  // ═══════════════════════════════════════════
+
+  const loginModal = document.getElementById('loginModal');
+  const loginForm = document.getElementById('loginForm');
+  const loginError = document.getElementById('loginError');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  function checkAuth() {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    
+    // Auto-bypass login on localhost to keep development frictionless
+    if (isLocal) {
+      if (loginModal) loginModal.classList.remove('show');
+      if (logoutBtn) logoutBtn.style.display = 'none';
+      return;
+    }
+
+    const sessionPwd = localStorage.getItem('warpigs_admin_password');
+    const sessionEmail = localStorage.getItem('warpigs_admin_email');
+
+    if (sessionEmail === 'larrywarpigs@gmail.com' && sessionPwd === 'Wardogs1!@') {
+      if (loginModal) loginModal.classList.remove('show');
+      if (logoutBtn) logoutBtn.style.display = 'block';
+    } else {
+      if (loginModal) loginModal.classList.add('show');
+      if (logoutBtn) logoutBtn.style.display = 'none';
+    }
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (email === 'larrywarpigs@gmail.com' && password === 'Wardogs1!@') {
+        localStorage.setItem('warpigs_admin_email', email);
+        localStorage.setItem('warpigs_admin_password', password);
+        if (loginError) loginError.style.display = 'none';
+        checkAuth();
+        showToast('Logged in successfully!');
+      } else {
+        if (loginError) {
+          loginError.textContent = 'Invalid email or password.';
+          loginError.style.display = 'block';
+        }
+      }
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('warpigs_admin_email');
+      localStorage.removeItem('warpigs_admin_password');
+      showToast('Logged out successfully.');
+      checkAuth();
+    });
+  }
+
+  // Run initial auth check
+  checkAuth();
+
+  // ═══════════════════════════════════════════
   //  SHARED UTILITIES
   // ═══════════════════════════════════════════
 
@@ -63,14 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } else {
       // Production serverless flow (save to GitHub in the background)
-      let password = localStorage.getItem('warpigs_admin_password');
+      const password = localStorage.getItem('warpigs_admin_password');
       if (!password) {
-        password = prompt('Enter Admin Password to update the live site:');
-        if (!password) {
-          showToast('Save cancelled: Password required.', 'error');
-          return;
-        }
-        localStorage.setItem('warpigs_admin_password', password);
+        showToast('Session expired. Please log in.', 'error');
+        checkAuth();
+        return;
       }
 
       showToast('Saving to GitHub in the background...');
