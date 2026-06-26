@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadVenuesInfo() {
     try {
-      const response = await fetch('venues_info.json');
+      const response = await fetch('venues_info.json?t=' + new Date().getTime());
       if (response.ok) {
         venuesInfo = await response.json();
       } else {
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadSchedule() {
     try {
-      const response = await fetch('schedule.json');
+      const response = await fetch('schedule.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
     } catch (err) {
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadStoryContent() {
     try {
-      const response = await fetch('story.json');
+      const response = await fetch('story.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Not ok');
       return await response.json();
     } catch (err) {
@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadContactContent() {
     try {
-      const response = await fetch('contact.json');
+      const response = await fetch('contact.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Not ok');
       return await response.json();
     } catch (err) {

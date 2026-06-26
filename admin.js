@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadSchedule() {
     try {
-      const response = await fetch('schedule.json');
+      const response = await fetch('schedule.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
     } catch (err) {
@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadStoryData() {
     try {
-      const response = await fetch('story.json');
+      const response = await fetch('story.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Network response was not ok');
       storyData = await response.json();
     } catch (err) {
@@ -648,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     email: {
       label: "Email",
-      address: "larry@warpigsbarbeque.com"
+      address: "info@warpigsbbq.food"
     },
     socials: {
       instagram: "https://www.instagram.com/warpigs_craft_kitchen/",
@@ -658,7 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadContactData() {
     try {
-      const response = await fetch('contact.json');
+      const response = await fetch('contact.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Network response was not ok');
       contactData = await response.json();
     } catch (err) {
@@ -887,7 +887,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadCities() {
     try {
-      const response = await fetch('cities.json');
+      const response = await fetch('cities.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Could not load cities.json');
       const cities = await response.json();
       populateCitiesDatalist(cities);
@@ -908,7 +908,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadVenues() {
     try {
-      const response = await fetch('venues.json');
+      const response = await fetch('venues.json?t=' + new Date().getTime());
       if (!response.ok) throw new Error('Could not load venues.json');
       const venues = await response.json();
       populateVenuesDatalist(venues);
