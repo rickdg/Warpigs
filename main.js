@@ -527,6 +527,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ——— Order Online Notice Modal ———
+  function showOrderNoticeModal() {
+    const modal = document.createElement('div');
+    modal.className = 'venue-modal order-notice-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    
+    modal.innerHTML = `
+      <div class="venue-modal__backdrop"></div>
+      <div class="venue-modal__wrapper">
+        <div class="venue-modal__content" style="max-width: 450px; text-align: center;">
+          <button class="venue-modal__close" aria-label="Close modal">✕</button>
+          <div class="venue-modal__header" style="text-align: center;">
+            <div class="section-label" style="margin-bottom: 1rem;">Online Ordering</div>
+            <h3 class="venue-modal__title" style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing: 0.05em;">Not Taking Orders</h3>
+          </div>
+          <div class="venue-modal__body" style="text-align: center; font-size: 1.1rem; line-height: 1.6; margin-top: 1rem;">
+            <p>Not taking orders at this time however we are working on it and it won't be long. Check back soon</p>
+          </div>
+          <div class="venue-modal__actions" style="justify-content: center; margin-top: 2rem;">
+            <button class="btn-notice-close venue-modal__close-btn">Okay</button>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden'; // Lock scroll
+    
+    // Animate show
+    setTimeout(() => {
+      modal.classList.add('show');
+    }, 10);
+    
+    // Close functions
+    const closeModal = () => {
+      modal.classList.remove('show');
+      setTimeout(() => {
+        modal.remove();
+        document.body.style.overflow = ''; // Restore scroll
+      }, 300);
+    };
+    
+    modal.querySelector('.venue-modal__close').addEventListener('click', closeModal);
+    modal.querySelector('.venue-modal__backdrop').addEventListener('click', closeModal);
+    modal.querySelector('.venue-modal__close-btn').addEventListener('click', closeModal);
+    
+    // Support Escape key to close
+    const handleKeydown = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', handleKeydown);
+      }
+    };
+    document.addEventListener('keydown', handleKeydown);
+  }
+
+  // Map click handlers for order notice links
+  document.querySelectorAll('[data-order-notice]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showOrderNoticeModal();
+    });
+  });
+
   // ——— Inject Particles into all sections ———
   document.querySelectorAll('section, footer').forEach(section => {
     const particles = document.createElement('div');

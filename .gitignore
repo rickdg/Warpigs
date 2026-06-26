@@ -1,0 +1,7 @@
+# Ignore local JSON data files
+cities.json
+contact.json
+schedule.json
+story.json
+venues.json
+venues_info.json
