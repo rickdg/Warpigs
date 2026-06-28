@@ -182,11 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {}
       }
       return [
-        { date: "FRI · MAY 1", venue: "Lagunitas Tap Room", city: "Petaluma", time: "4–8pm" },
-        { date: "SAT · MAY 9", venue: "Windsor Town Green", city: "Windsor", time: "12–7pm" },
-        { date: "THU · MAY 14", venue: "Cotati Brewing Co.", city: "Cotati", time: "5–9pm" },
-        { date: "SAT · MAY 23", venue: "Private Catering", city: "Sonoma", time: "Booked" },
-        { date: "FRI · MAY 29", venue: "HenHouse Brewing", city: "Santa Rosa", time: "4–8pm" }
+        { date: "SAT · JUN 6", venue: "Shady Oak", city: "Santa Rosa", time: "4:00 to 10:00" },
+        { date: "THU · JUN 11", venue: "RV Taproom", city: "Santa Rosa", time: "5:00 to 9:00" },
+        { date: "SAT · JUN 13", venue: "Parliament Brewery", city: "Rohnert Park", time: "TBA" },
+        { date: "FRI · JUN 19", venue: "Mercy Lounge", city: "Cotati", time: "TBA" },
+        { date: "SAT · JUN 20", venue: "Chateau Diana", city: "Healdsburg", time: "TBA" },
+        { date: "WED · JUN 24", venue: "Parliament Brewery", city: "Rohnert Park", time: "TBA" },
+        { date: "FRI · JUN 26", venue: "Shady Oak", city: "Santa Rosa", time: "TBA" },
+        { date: "SUN · JUN 28", venue: "Mercy Lounge", city: "Cotati", time: "TBA" }
       ];
     }
   }
