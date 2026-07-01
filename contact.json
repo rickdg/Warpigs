@@ -1,0 +1,23 @@
+{
+  "sectionLabel": "Get in Touch",
+  "title": "Let's Feed Your People.",
+  "description": "Tell us about your event and we'll send a quote within 24 hours. Most weekends book 4–6 weeks ahead.",
+  "address": {
+    "label": "Kitchen",
+    "line1": "8492 So. Gravenstein Hwy, Suite O",
+    "line2": "Cotati, CA 94931"
+  },
+  "phone": {
+    "label": "Call the Pit",
+    "number": "(707) 508-5551",
+    "href": "tel:+17075085551"
+  },
+  "email": {
+    "label": "Email",
+    "address": "info@warpigsbbq.food"
+  },
+  "socials": {
+    "instagram": "https://www.instagram.com/warpigs_craft_kitchen/",
+    "facebook": "https://www.facebook.com/WarPigsBBQinCali"
+  }
+}
