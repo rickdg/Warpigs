@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "warpigsbarbeque.com"
+        }
+      ],
+      "destination": "https://www.warpigsbbq.food/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.warpigsbarbeque.com"
+        }
+      ],
+      "destination": "https://www.warpigsbbq.food/:path*",
+      "permanent": true
+    }
+  ]
+}
