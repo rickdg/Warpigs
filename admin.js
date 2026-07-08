@@ -419,6 +419,12 @@ document.addEventListener('DOMContentLoaded', () => {
       { number: 14, label: "Years Smoking" },
       { number: 500, label: "Events Catered" },
       { number: 1, label: "Pit Master" }
+    ],
+    gallery: [
+      { image: "assets/story/LogoandLarry.jpg", caption: "Pit Master Larry Hillix beside the War Pigs logo." },
+      { image: "assets/story/LarryandTeamMember.jpg", caption: "Larry and a team member prepping the offset smoker." },
+      { image: "assets/story/Team.jpeg", caption: "The War Pigs BBQ team, dedicated to slow-smoked perfection." },
+      { image: "assets/story/contest4.jpg", caption: "Throwback to our competition roots where it all began." }
     ]
   };
 
@@ -450,6 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setVal('storySignoff', storyData.signoff);
     renderStoryParagraphs();
     renderStoryStats();
+    renderStoryGallery();
     updateStoryCodePreview();
   }
 
@@ -542,6 +549,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function renderStoryGallery() {
+    const container = document.getElementById('storyGallery');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!storyData.gallery) storyData.gallery = [];
+
+    storyData.gallery.forEach((item, idx) => {
+      const row = document.createElement('div');
+      row.className = 'gallery-row';
+      row.style = 'background: var(--bg-card); padding: 1.25rem; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--cream-10);';
+      row.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+          <span style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: var(--ember);">IMAGE ${idx + 1}</span>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="icon-btn gallery-move-up" data-index="${idx}" title="Move Up" ${idx === 0 ? 'disabled style="opacity:0.3;"' : ''}>↑</button>
+            <button class="icon-btn gallery-move-down" data-index="${idx}" title="Move Down" ${idx === storyData.gallery.length - 1 ? 'disabled style="opacity:0.3;"' : ''}>↓</button>
+            <button class="icon-btn icon-btn--delete gallery-delete-btn" data-index="${idx}" title="Remove Image">✕</button>
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom: 0.75rem;">
+          <div class="form-group form-group--wide">
+            <label>Image File Path</label>
+            <input type="text" class="form-control gallery-image-path" data-index="${idx}" value="${escapeHtml(item.image || '')}" placeholder="e.g. assets/story/Photo.jpg">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group form-group--wide">
+            <label>Caption</label>
+            <input type="text" class="form-control gallery-caption" data-index="${idx}" value="${escapeHtml(item.caption || '')}" placeholder="Describe this picture...">
+          </div>
+        </div>
+      `;
+      container.appendChild(row);
+    });
+
+    // Listeners for input change
+    container.querySelectorAll('.gallery-image-path').forEach(input => {
+      input.addEventListener('input', (e) => {
+        storyData.gallery[parseInt(e.target.dataset.index)].image = e.target.value;
+        updateStoryCodePreview();
+      });
+    });
+
+    container.querySelectorAll('.gallery-caption').forEach(input => {
+      input.addEventListener('input', (e) => {
+        storyData.gallery[parseInt(e.target.dataset.index)].caption = e.target.value;
+        updateStoryCodePreview();
+      });
+    });
+
+    // Reorder/Delete listeners
+    container.querySelectorAll('.gallery-move-up').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const index = parseInt(e.target.dataset.index);
+        moveGalleryItem(index, -1);
+      });
+    });
+
+    container.querySelectorAll('.gallery-move-down').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const index = parseInt(e.target.dataset.index);
+        moveGalleryItem(index, 1);
+      });
+    });
+
+    container.querySelectorAll('.gallery-delete-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const index = parseInt(e.target.dataset.index);
+        storyData.gallery.splice(index, 1);
+        renderStoryGallery();
+        updateStoryCodePreview();
+      });
+    });
+  }
+
+  function moveGalleryItem(index, direction) {
+    const target = index + direction;
+    if (target >= 0 && target < storyData.gallery.length) {
+      const temp = storyData.gallery[index];
+      storyData.gallery[index] = storyData.gallery[target];
+      storyData.gallery[target] = temp;
+      renderStoryGallery();
+      updateStoryCodePreview();
+    }
+  }
+
   // Gather story form data
   function gatherStoryData() {
     const getVal = (id) => {
@@ -582,6 +676,21 @@ document.addEventListener('DOMContentLoaded', () => {
       storyData.paragraphs.push('');
       renderStoryParagraphs();
       updateStoryCodePreview();
+    });
+  }
+
+  // Add gallery image
+  const addGalleryItemBtn = document.getElementById('addGalleryItemBtn');
+  if (addGalleryItemBtn) {
+    addGalleryItemBtn.addEventListener('click', () => {
+      if (!storyData.gallery) storyData.gallery = [];
+      storyData.gallery.push({ image: '', caption: '' });
+      renderStoryGallery();
+      updateStoryCodePreview();
+      setTimeout(() => {
+        const rows = document.querySelectorAll('.gallery-row');
+        if (rows.length > 0) rows[rows.length - 1].scrollIntoView({ behavior: 'smooth' });
+      }, 50);
     });
   }
 

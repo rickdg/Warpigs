@@ -407,7 +407,161 @@ document.addEventListener('DOMContentLoaded', () => {
           cObserver.observe(el);
         });
       }
+
+      // Initialize Story Gallery if data exists
+      const openGalleryBtn = document.getElementById('openGalleryBtn');
+      if (openGalleryBtn) {
+        if (data.gallery && data.gallery.length > 0) {
+          openGalleryBtn.style.display = 'inline-flex';
+          initStoryGallery(data.gallery);
+        } else {
+          openGalleryBtn.style.display = 'none';
+        }
+      }
     });
+  }
+
+  function initStoryGallery(galleryItems) {
+    const openGalleryBtn = document.getElementById('openGalleryBtn');
+    if (!openGalleryBtn) return;
+
+    // Preload images for smooth slide transition
+    galleryItems.forEach(item => {
+      const img = new Image();
+      img.src = item.image;
+    });
+
+    openGalleryBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showGalleryModal(galleryItems, 0);
+    });
+  }
+
+  function showGalleryModal(items, index) {
+    // Create gallery modal element
+    const modal = document.createElement('div');
+    modal.className = 'gallery-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    
+    modal.innerHTML = `
+      <div class="gallery-modal__backdrop"></div>
+      <div class="gallery-modal__wrapper">
+        <button class="gallery-modal__close" aria-label="Close gallery">✕</button>
+        
+        <div class="gallery-modal__showcase">
+          <button class="gallery-modal__nav gallery-modal__nav--prev" aria-label="Previous photo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <img class="gallery-modal__image active" src="${escapeHtml(items[index].image)}" alt="${escapeHtml(items[index].caption || '')}">
+          <button class="gallery-modal__nav gallery-modal__nav--next" aria-label="Next photo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        
+        <div class="gallery-modal__bar">
+          <div class="gallery-modal__meta">
+            <p class="gallery-modal__caption">${escapeHtml(items[index].caption || '')}</p>
+            <span class="gallery-modal__index">IMAGE ${index + 1} OF ${items.length}</span>
+          </div>
+        </div>
+
+        <div class="gallery-modal__thumbnails">
+          ${items.map((item, idx) => `
+            <div class="gallery-modal__thumb ${idx === index ? 'active' : ''}" data-index="${idx}">
+              <img src="${escapeHtml(item.image)}" alt="Thumbnail ${idx + 1}" loading="lazy">
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden'; // Lock scroll
+
+    // Animate show
+    setTimeout(() => {
+      modal.classList.add('show');
+    }, 10);
+
+    const imgElement = modal.querySelector('.gallery-modal__image');
+    const captionElement = modal.querySelector('.gallery-modal__caption');
+    const indexElement = modal.querySelector('.gallery-modal__index');
+    const prevBtn = modal.querySelector('.gallery-modal__nav--prev');
+    const nextBtn = modal.querySelector('.gallery-modal__nav--next');
+    const thumbs = modal.querySelectorAll('.gallery-modal__thumb');
+
+    const updateSlide = (newIndex) => {
+      if (newIndex < 0 || newIndex >= items.length || newIndex === index) return;
+      
+      // Update active thumbnail
+      thumbs[index].classList.remove('active');
+      thumbs[newIndex].classList.add('active');
+
+      index = newIndex;
+
+      // Smooth slide/fade transition
+      imgElement.classList.remove('active');
+      setTimeout(() => {
+        imgElement.src = items[index].image;
+        imgElement.alt = items[index].caption || '';
+        captionElement.textContent = items[index].caption || '';
+        indexElement.textContent = `IMAGE ${index + 1} OF ${items.length}`;
+        imgElement.classList.add('active');
+      }, 200);
+    };
+
+    // Nav listeners
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let prevIdx = index - 1;
+      if (prevIdx < 0) prevIdx = items.length - 1;
+      updateSlide(prevIdx);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let nextIdx = index + 1;
+      if (nextIdx >= items.length) nextIdx = 0;
+      updateSlide(nextIdx);
+    });
+
+    // Thumbnail click listeners
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', (e) => {
+        const targetIdx = parseInt(thumb.currentTarget.dataset.index, 10);
+        updateSlide(targetIdx);
+      });
+    });
+
+    // Close function
+    const closeModal = () => {
+      modal.classList.remove('show');
+      setTimeout(() => {
+        modal.remove();
+        document.body.style.overflow = ''; // Restore scroll
+      }, 300);
+      document.removeEventListener('keydown', handleKeydown);
+    };
+
+    modal.querySelector('.gallery-modal__close').addEventListener('click', closeModal);
+    modal.querySelector('.gallery-modal__backdrop').addEventListener('click', closeModal);
+
+    // Support keyboard navigation
+    const handleKeydown = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      } else if (e.key === 'ArrowLeft') {
+        let prevIdx = index - 1;
+        if (prevIdx < 0) prevIdx = items.length - 1;
+        updateSlide(prevIdx);
+      } else if (e.key === 'ArrowRight') {
+        let nextIdx = index + 1;
+        if (nextIdx >= items.length) nextIdx = 0;
+        updateSlide(nextIdx);
+      }
+    };
+    document.addEventListener('keydown', handleKeydown);
   }
 
   async function loadStoryContent() {
