@@ -1,56 +1,26 @@
 [
   {
-    "date": "THU · JUL 2",
+    "date": "SAT · AUG 15",
+    "venue": "Parliament Brewery",
+    "city": "Rohnert Park",
+    "time": "12:00 to 8:00"
+  },
+  {
+    "date": "WED · AUG 19",
     "venue": "Parliament Brewery",
     "city": "Rohnert Park",
     "time": "4:00 to 8:00"
   },
   {
-    "date": "FRI · JUL 3",
-    "venue": "Windsor Kaboom VIP",
-    "city": "Windsor",
-    "time": "6:00 to 8:00"
-  },
-  {
-    "date": "SAT · JUL 11",
-    "venue": "Dry Creek Vineyards",
-    "city": "Healdsburg",
-    "time": "12:00 to 8:00"
-  },
-  {
-    "date": "SUN · JUL 12",
-    "venue": "RV Taproom",
-    "city": "Santa Rosa",
-    "time": "12:00 to 8:00"
-  },
-  {
-    "date": "SAT · JUL 18",
-    "venue": "Parliament Brewery",
-    "city": "Rohnert Park",
-    "time": "12:00 to 8:00"
-  },
-  {
-    "date": "SUN · JUL 19",
-    "venue": "8 Ball in Cotati",
-    "city": "Cotati",
-    "time": "12:00 to 8:00"
-  },
-  {
-    "date": "THU · JUL 23",
+    "date": "THU · AUG 20",
     "venue": "RV Taproom",
     "city": "Santa Rosa",
     "time": "4:00 to 8:00"
   },
   {
-    "date": "SUN · JUL 26",
+    "date": "SUN · AUG 30",
     "venue": "Parliament Brewery",
     "city": "Rohnert Park",
     "time": "12:00 to 8:00"
-  },
-  {
-    "date": "THU · JUL 30",
-    "venue": "Parliament Brewery",
-    "city": "Rohnert Park",
-    "time": "4:00 to 8:00"
   }
 ]
