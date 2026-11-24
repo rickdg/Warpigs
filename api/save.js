@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error: GITHUB_TOKEN is not set.' });
   }
 
-  const owner = 'rickdg';
+  const owner = 'LarryWarpigs';
   const repo = 'Warpigs';
   const branch = 'main';
 
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
     // 2. Commit the file to GitHub
     const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filename}`;
     const base64Content = Buffer.from(content).toString('base64');
-    
+
     const putBody = {
       message: `Update ${filename} via Web Admin Panel`,
       content: base64Content,
