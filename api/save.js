@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error: GITHUB_TOKEN is not set.' });
   }
 
-  const owner = 'LarryWarpigs';
+  const owner = 'rickdg';
   const repo = 'Warpigs';
   const branch = 'main';
 
