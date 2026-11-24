@@ -203,13 +203,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // ═══════════════════════════════════════════
 
   let scheduleData = [];
+  let venuesInfoMap = {};
 
   async function loadScheduleData() {
-    await loadCities();
-    await loadVenues();
+    await Promise.all([loadCities(), loadVenues(), loadVenuesInfoMap()]);
     scheduleData = await loadSchedule();
     renderScheduleRows();
     updateScheduleCodePreview();
+  }
+
+  async function loadVenuesInfoMap() {
+    try {
+      const response = await fetch('venues_info.json?t=' + new Date().getTime());
+      if (response.ok) {
+        venuesInfoMap = await response.json();
+      }
+    } catch (err) {
+      console.warn('Could not load venues_info.json for city autofill.', err);
+    }
   }
 
   async function loadSchedule() {
@@ -299,6 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
           e.target.value = val;
         }
         scheduleData[idx][field] = val;
+        if (field === 'venue' && venuesInfoMap[val] && venuesInfoMap[val].city) {
+          const cityInput = list.querySelector(`.form-control[data-index="${idx}"][data-field="city"]`);
+          scheduleData[idx].city = venuesInfoMap[val].city;
+          if (cityInput) cityInput.value = venuesInfoMap[val].city;
+        }
         updateScheduleCodePreview();
       });
     });
