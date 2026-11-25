@@ -1,24 +1,26 @@
+[
   {
     "date": "TUE · DEC 15",
     "venue": "Private catering",
     "city": "Santa Rosa",
     "time": "4:00 to 8:00"
   },
-  "date": "SAT · DEC 5",
-  "venue": "Parliament Brewery",
-  "city": "Rohnert Park",
-  "time": "12:00 to 8:00"
-},
-{
-  "date": "THU · DEC 17",
-  "venue": "Parliament Brewery",
-  "city": "Rohnert Park",
-  "time": "4:00 to 8:00"
-},
-{
-  "date": "SUN · DEC 27",
-  "venue": "Parliament Brewery",
-  "city": "Rohnert Park",
-  "time": "12:00 to 8:00"
-}
+  {
+    "date": "SAT · DEC 5",
+    "venue": "Parliament Brewery",
+    "city": "Rohnert Park",
+    "time": "12:00 to 8:00"
+  },
+  {
+    "date": "THU · DEC 17",
+    "venue": "Parliament Brewery",
+    "city": "Rohnert Park",
+    "time": "4:00 to 8:00"
+  },
+  {
+    "date": "SUN · DEC 27",
+    "venue": "Parliament Brewery",
+    "city": "Rohnert Park",
+    "time": "12:00 to 8:00"
+  }
 ]
